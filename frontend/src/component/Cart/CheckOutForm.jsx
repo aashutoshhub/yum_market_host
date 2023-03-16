@@ -73,11 +73,13 @@ const CheckoutForm = () => {
   const[openModel,setOpenModel]=useState(false);
 
 
-  const submitHandler = async e => {
-    e.preventDefault();
-     payBtn.current.disabled=true;
+  const submitHandler = async () => {  
+    // e.preventDefault();
+   
+    payBtn.current.disabled = true;
+    
 
-    //console.log(' up to here2');
+    // console.log(' up to here2');
 
      try{
        const config={

@@ -1,7 +1,12 @@
 import './App.css';
-import React,{  useEffect,useState  } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './component/layout/Header/Header';
-import {BrowserRouter as Router,Routes,Route} from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate
+} from 'react-router-dom';
 import Footer from './component/layout/Footer/Footer';
 import Home from './component/Home/Home';
 import ProductDetails from './Product/ProductDetails';
@@ -14,7 +19,7 @@ import Account from './component/Account/Account';
 import store from './store';
 import { loadUser } from './actions/UserActions';
 
-import {useSelector,useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useAlert } from 'react-alert';
 import UserOptions from './component/layout/Header/UserOptions';
 import Profile from './component/User/Profile';
@@ -44,125 +49,118 @@ import PageNotFound from './component/layout/PageNotFound';
 import Contact from './component/layout/Contact/Contact';
 import About from './component/layout/About/About';
 
-
 //import {webFont} from 'webfontloader';
 
- 
-
 function App() {
-
-
-  const alert=useAlert();
- 
-
+  const alert = useAlert();
 
   //for user authentication during start of app
   useEffect(() => {
-    if(error){
+    if (error) {
       alert.error(error);
     }
 
     store.dispatch(loadUser());
-
-  
-
   }, []);
-  
 
-   //to take data of state in order to check and passes in UserOptions
-   const { error, loading, isAuthenticated,user } = useSelector(
-    (state) => state.users
+  //to take data of state in order to check and passes in UserOptions
+  const { error, loading, isAuthenticated, user } = useSelector(
+    state => state.users
   );
 
-  {isAuthenticated && console.log(user.user.role)}
-
+  // // {isAuthenticated && console.log(user.user.role)}
 
   //block inspect in browser
   //window.addEventListener("contextmenu",(e)=>e.preventDefault())
 
   return (
-     <Router>
-         <Header/>
-      
-         {isAuthenticated && <UserOptions user={user}/>}
-      
-         <Routes>
-         <Route exact path="/" element={<Home/>} />
+    <>
+      <Router>
+        <Header />
 
-         <Route exact path="/login" element={<LoginSignUp/>} />
+        {isAuthenticated && <UserOptions user={user} />}
 
-         {/* <Route exact path="/account" element={<Profile/>} /> */}
+        <Routes>
+          <Route exact path='/' element={<Home />} />
 
-         <Route exact path='/contact' element={<Contact/>} />
-         <Route exact path='/about' element={<About/>} />
-         
-          <Route exact path="/profile" element={<Profile/>} />
+          <Route exact path='/login' element={<LoginSignUp />} />
 
-         <Route exact path="/update" element={<UpdateProfile/>} />
+          {/* <Route exact path="/account" element={<Profile/>} /> */}
 
-         <Route exact path="/password/update" element={<UpdatePassword/>} />
+          <Route exact path='/contact' element={<Contact />} />
+          <Route exact path='/about' element={<About />} />
 
-          <Route  path='/:id' element={<ProductDetails/>} />
+          <Route exact path='/profile' element={<Profile />} />
 
-          <Route exact path='/products' element={<Products/>} />
+          <Route exact path='/update' element={<UpdateProfile />} />
 
-          <Route exact path='/Search' element={<Search/>} />
+          <Route exact path='/password/update' element={<UpdatePassword />} />
 
-          <Route  path='/products/:keyword' element={<Products/>} />
+          <Route path='/:id' element={<ProductDetails />} />
 
-          <Route exact path='/password/forgot' element={<ForgotPassword/>} />
+          <Route exact path='/products' element={<Products />} />
 
-          <Route exact path='/password/reset/:token' element={<ResetPassword/>} />
+          <Route exact path='/Search' element={<Search />} />
 
-          <Route exact path='/cart' element={<Cart/>} />
+          <Route path='/products/:keyword' element={<Products />} />
 
-          <Route exact path='/shipping' element={<Shipping/>} />
+          <Route exact path='/password/forgot' element={<ForgotPassword />} />
 
-          <Route exact path='/order/confirm' element={<ConfirmOrder/>} />
+          <Route
+            exact
+            path='/password/reset/:token'
+            element={<ResetPassword />}
+          />
 
-         <Route exact path='/payment' element={<Payment/>} />
+          <Route exact path='/cart' element={<Cart />} />
 
-         <Route exact path='/success' element={<OrderSuccess/>} />
+          <Route exact path='/shipping' element={<Shipping />} />
 
+          <Route exact path='/order/confirm' element={<ConfirmOrder />} />
 
-         <Route exact path='/orders' element={<MyOrders/>} />
+          <Route exact path='/payment' element={<Payment />} />
 
-         {/* this is for order/id */}
-         <Route exact path='/order/:id' element={<SingleOrder/>} />
-         
-         {/* Dashboard  */}
-         
-         {/* {(isAuthenticated && user.user.role==='admin') ?
+          <Route exact path='/success' element={<OrderSuccess />} />
+
+          <Route exact path='/orders' element={<MyOrders />} />
+
+          {/* this is for order/id */}
+          <Route exact path='/order/:id' element={<SingleOrder />} />
+
+          {/* Dashboard  */}
+
+          {/* {(isAuthenticated && user.user.role==='admin') ?
          (<Route exact path='/admin/dashboard' element={<Dashboard/>}/>) : (
             navigate("/login")
          )
          } */}
 
-         <Route exact path='/admin/dashboard' element={<Dashboard/>}/>
-         <Route exact path='/admin/products' element={<ProductList/>}/>
-         
-         <Route exact path='/admin/product/new' element={<CreateProduct/>}/>
-         
-         <Route exact path='admin/product/:id' element={<UpdateProduct/>}/>
-         
+          <Route exact path='/admin/dashboard' element={<Dashboard />} />
+          <Route exact path='/admin/products' element={<ProductList />} />
 
-         <Route exact path='/admin/orders' element={<AdminOrders/>} />
+          <Route exact path='/admin/product/new' element={<CreateProduct />} />
 
-         <Route exact path='/admin/order/:id' element={<UpdateOrder/>} />
+          <Route exact path='admin/product/:id' element={<UpdateProduct />} />
 
-         <Route exact path='/admin/users' element={<AllUsers/>} />
+          <Route exact path='/admin/orders' element={<AdminOrders />} />
 
-         <Route exact path='/admin/user/:id' element={<UpdateUser/>} />
+          <Route exact path='/admin/order/:id' element={<UpdateOrder />} />
 
-         <Route exact path='/admin/reviews' element={<Reviews/>} />
+          <Route exact path='/admin/users' element={<AllUsers />} />
 
-        
-         <Route path="/*" element={<PageNotFound/>}/>
-         </Routes>
-          
-         <Footer/>
-         
-     </Router>
+          <Route exact path='/admin/user/:id' element={<UpdateUser />} />
+
+          <Route exact path='/admin/reviews' element={<Reviews />} />
+
+          <Route path='/*' element={<PageNotFound />} />
+          {/* or */}
+          {/* <Route path="/*" element={<Navigate to="/" />} />
+           */}
+        </Routes>
+
+        <Footer />
+      </Router>
+    </>
   );
 }
 
