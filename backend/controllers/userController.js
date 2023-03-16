@@ -8,10 +8,9 @@ const crypto = require('crypto');
 const cloudinary = require('cloudinary');
 const { findByIdAndUpdate } = require('../models/userModel');
 
-const dotenv=require('dotenv');
-//config 
-dotenv.config({path:"backend/config/config.env"});
-
+const dotenv = require('dotenv');
+//config
+dotenv.config({ path: 'backend/config/config.env' });
 
 //Register a user
 exports.registerUser = catchAsyncError(async (req, res, next) => {
@@ -99,19 +98,20 @@ exports.forgotPassword = catchAsyncError(async (req, res, next) => {
   //get reset password token
   const resetToken = user.generateResetPasswordToken();
 
+  console.log('reset token: ', resetToken);
+
   //save
   await user.save({ validateBeforeSave: false });
 
   //generateUrl
   // const resetPasswordUrl=`http://localhost/api/v1/password/reset/${resetToken}`;
-  const resetPasswordUrl = `${req.protocol}://${req.get(
-    'host'
-  )}/api/v1/password/reset/${resetToken}`;
+  //change
+  // const resetPasswordUrl = `${req.protocol}://${req.get(
+  //   'host'
+  // )}/api/v1/password/reset/${resetToken}`;
 
- //for frontend 
- //const resetPasswordUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`;
-
-
+  //for frontend
+  const resetPasswordUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`;
 
   //message
   const message = `Your password reset token is temp  :- \n\n ${resetPasswordUrl} \n\n If your have not request 
@@ -121,7 +121,7 @@ exports.forgotPassword = catchAsyncError(async (req, res, next) => {
     await sendEmail({
       //works as options in sendEmail.js file
       email: user.email,
-      subject: `Ecommerce Password Recovery`,
+      subject: `Yum Market Password Recovery`,
       message
     });
 

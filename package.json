@@ -1,19 +1,19 @@
 {
-  "name": "ecommerce",
+  "name": "yum_market",
   "version": "1.0.0",
   "description": "this is an Ecommerce mern app",
   "main": "backend/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node backend/server.js",
-    "dev": "nodemon backend/server.js",
-    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false && npm install --prefix frontend && npm run build --prefix frontend "
+    "dev": "nodemon backend/server.js"
+   
   },
   "author": "Aashutosh Gupta",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.20.1",
+    "body-parser": "^1.20.2",
     "cloudinary": "^1.33.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",

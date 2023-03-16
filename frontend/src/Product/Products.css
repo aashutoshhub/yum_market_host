@@ -68,9 +68,9 @@
   
   .filterBox {
     width: 10vmax;
-    position: absolute;
+    position: fixed;
     top: 10vmax;
-    left: 4vmax;
+    left: 1vmax;
     padding: 8px;
     background-color: rgb(240, 239, 239);
     border: 2px solid rgb(228, 226, 226);

@@ -47,56 +47,12 @@ function Payment() {
   
     }, []);
 
-   
-
-
-
-
-    // const stripe = useStripe();
-    // const elements = useElements();
-
-    // const orderInfo=JSON.parse(sessionStorage.getItem("orderInfo"));
-    // const payBtn=useRef(null);
-    // const submitHandler=()=>{};
-
-   
-
   return (
     <>
-        {/* <MetaData title="Payment"/>
-        <CheckOutSteps activeStep={2} />
-        <div className="paymentContainer">
-            <form className="paymentForm" onSubmit={(e)=>submitHandler(3)}>
-                <Typography>Card Info</Typography>
-                 */}
-                {/* <div>
-                    <CreditCardIcon/>
-                    <CardNumberElement className="paymentInput"/>
-                </div>
-                <div>
-                    <EventIcon/>
-                    <CardExpiryElement className="paymentInput"/>
-                </div>
-                <div>
-                    <VpnKeyIcon/>
-                    <CardCvcElement className="paymentInput"/>
-                </div> */}
-
-
             <Elements stripe={loadStripe(stripeApiKey)} >
               <CheckoutForm/>
             </Elements>
-
-               
-                {/* <input 
-                 type="submit"
-                 value={`Pay - ${orderInfo && orderInfo.totalPrice}`}
-                 ref={payBtn}
-                 className="paymentFormBtn"
-                 /> */}
-
-            {/* </form>
-        </div> */}
+    
     </>
   )
 }

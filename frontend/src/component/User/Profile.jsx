@@ -1,5 +1,5 @@
 import React , {useEffect} from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate,NavLink } from 'react-router-dom';
 import MetaData from '../layout/MetaData';
 import {useSelector} from 'react-redux';
 import Loader from '../layout/Loader/Loader';
@@ -31,7 +31,7 @@ function Profile() {
             <div>
                 <h1>My Profile</h1>
                 <img src={user.user.avatar.url} alt={user.user.name} />
-                <Link to="/update">Edit Profile</Link>
+                <NavLink to="/update">Edit Profile</NavLink>
             </div>
             <div>
 
@@ -55,8 +55,8 @@ function Profile() {
 
 
                 <div>
-                    <Link to="/orders">My Orders</Link>
-                    <Link to="/password/update">Change Password</Link>
+                    <NavLink to="/orders">My Orders</NavLink>
+                    <NavLink to="/password/update">Change Password</NavLink>
                 </div>
 
 

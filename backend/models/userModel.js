@@ -36,7 +36,7 @@ const userSchema=new mongoose.Schema({
                 type:String,
                 required:true
             }
-    },
+    }, 
     role:{
         type:String,
         default:"user"
@@ -75,7 +75,9 @@ userSchema.methods.comparePassword=async function(enteredPassword){
 userSchema.methods.generateResetPasswordToken=function(){
     
     //Generationg token
-    const resetToken=crypto.randomBytes(20).toString('hex');
+    const resetToken = crypto.randomBytes(20).toString('hex');
+    
+    console.log("reset token in model: ", resetToken);
 
     //Hashing and add resetToken to userSchema
     this.resetPasswordToken=crypto
