@@ -1,3 +1,16 @@
+sudo apt install nodejs
+
+sudo apt install npm
+
+npm install
+
+node backend/server.js
+
+
+
+
+
+
 Install Dependencies
 For Backend - npm i
 
