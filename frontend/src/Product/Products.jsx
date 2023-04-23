@@ -10,6 +10,7 @@ import Pagination from 'react-js-pagination';
 import Typegraphy from '@material-ui/core/Typography';
 import { Slider } from '@material-ui/core';
 import MetaData from '../component/layout/MetaData';
+import ProductLoader from './ProductLoader';
 
 //categories
 const categories = [
@@ -87,7 +88,11 @@ function Products() {
   return (
     <>
       {loading ? (
-        <Loader />
+      <>
+          <Loader /> 
+        {/* <ProductLoader/> */}
+        
+      </>
        
       ) : (
         <>

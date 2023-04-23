@@ -24,11 +24,17 @@ const Navbar = () => {
     }
 
 //nav
-    const [showMediaIcons, setShowMediaIcons] = useState(false);
+  const [showMediaIcons, setShowMediaIcons] = useState(false);
+  
+  // fixed Header
+  window.addEventListener('scroll', function () {
+    const search = document.querySelector('.search');
+    search.classList.toggle('active', window.scrollY > 100);
+  });
 
     return (
       <>
-        <nav className='main-nav'>
+        <nav className='main-nav search'>
           {/* 1st logo part  */}
           {/* <img src='' alt='sonuShastri_logo'/> */}
 

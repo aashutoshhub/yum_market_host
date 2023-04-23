@@ -24,6 +24,7 @@ function CreateProduct() {
   const alert = useAlert();
 
   const { loading, error, success } = useSelector(state => state.newProduct);
+  
   const [name, setName] = useState('');
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState('');
@@ -57,6 +58,7 @@ function CreateProduct() {
     }
   }, [dispatch, error, navigate, success, alert]);
 
+  
   const createFormSubmitHandler = e => {
     e.preventDefault();
     const myForm = new FormData();
@@ -184,6 +186,7 @@ function CreateProduct() {
               Create
             </Button>
           </form>
+      
         </div>
       </div>
     </>

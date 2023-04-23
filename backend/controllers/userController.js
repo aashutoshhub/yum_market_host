@@ -117,6 +117,12 @@ exports.forgotPassword = catchAsyncError(async (req, res, next) => {
   const message = `Your password reset token is temp  :- \n\n ${resetPasswordUrl} \n\n If your have not request 
     then , Please ignore it`;
 
+  // const message = `
+  // <h1>Your Password reset Link : ${resetPasswordUrl} \n\n </h1>
+  // <p>If your have not request then , Please ignore it.</p>
+  // <h2>ThankYou</h2>
+  //   `;
+
   try {
     await sendEmail({
       //works as options in sendEmail.js file

@@ -33,7 +33,7 @@ function UpdateProduct() {
     //for update state
     const {error:updateError,isUpdated}=useSelector((state)=>state.updateProduct);
     
-    console.log(id);
+    //console.log(id);
     //console.log(product.name);
 
     const[name,setName]=useState("");

@@ -24,6 +24,9 @@ function ProductList() {
 
   const {error:deleteError,isDeleted}=useSelector((state)=>state.removedProduct);
 
+
+  //console.log("product in productlist: ",products)
+
   //deleting product function 
   const deleteProductHandler=(id)=>{
     dispatch(deleteProduct(id));

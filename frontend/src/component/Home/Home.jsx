@@ -1,64 +1,45 @@
 import './home.css';
-import React, { useEffect ,useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Product from './ProductCard';
 import MetaData from '../layout/MetaData';
-import {clearErrors, getProducts} from '../../actions/ProductActions';  
-import {useSelector,useDispatch} from 'react-redux';
+import { clearErrors, getProducts } from '../../actions/ProductActions';
+import { useSelector, useDispatch } from 'react-redux';
 import Loader from '../layout/Loader/Loader';
 import { useAlert } from 'react-alert';
 import ProductCard from './ProductCard';
-import {UncontrolledCarousel} from 'reactstrap';
+import { UncontrolledCarousel } from 'reactstrap';
 
 //for crousel
 import Carousel from 'react-bootstrap/Carousel';
+import { getAllSlider } from '../../actions/SliderAction';
 
 //import {CgMouse} from 'react-icons/all';
 
-
-
 function Home() {
+  const alert = useAlert();
+  const dispatch = useDispatch();
 
-   
+  //for slider
+  const { loadings, errors, success, slider } = useSelector(
+    state => state.allSlider
+  );
 
-  const alert=useAlert();
-  const dispatch=useDispatch();
+ console.log('slider in home : ', slider);
 
- 
-  //products is same name as from database 
-  const {loading,error,products}=useSelector(
-    state => state.productsitem
-    );
 
-  useEffect(()=>{
-    if(error){
+  //products is same name as from database
+  const { loading, error, products } = useSelector(state => state.productsitem);
+
+  useEffect(() => {
+    if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
+    dispatch(getAllSlider());
     dispatch(getProducts());
-  },[dispatch,error,alert]);
+  }, [dispatch, error, alert]);
 
-
-  //crousel
-  // const items=[
-  //   {
-  //     altText: 'Slide 1',
-  //     caption: 'Slide 1',
-  //     key: 1,
-  //     src: 'https://picsum.photos/id/123/1200/400'
-  //   },
-  //   {
-  //     altText: 'Slide 2',
-  //     caption: 'Slide 2',
-  //     key: 2,
-  //     src: 'https://picsum.photos/id/456/1200/400'
-  //   },
-  //   {
-  //     altText: 'Slide 3',
-  //     caption: 'Slide 3',
-  //     key: 3,
-  //     src: 'https://picsum.photos/id/678/1200/400'
-  //   }
-  // ];
+  
 
   return (
     <>
@@ -84,18 +65,17 @@ function Home() {
         /> */}
 
           <Carousel slide={false}>
-            <Carousel.Item>
+            <Carousel.Item interval={1000}>
               <img
                 className='d-block w-100'
-                src='https://picsum.photos/id/123/1200/400'
+                //src={slider[0] && slider[0].images[0].url}
+                src='https://res.cloudinary.com/dibyofcwi/image/upload/v1679817756/sliders/viuiirsv7hqgbwt8vogy.png'
                 alt='First slide'
               />
               <Carousel.Caption>
                 <div className='carouselTopContent'>
-                  <h3>First slide label</h3>
-                  <p>
-                    Nulla vitae elit libero, a pharetra augue mollis interdum.
-                  </p>
+                  {/* <h3>{slider[0] && slider[0].heading}</h3>
+                  <p>{slider[0] && slider[0].description}</p> */}
                 </div>
               </Carousel.Caption>
             </Carousel.Item>
@@ -103,16 +83,19 @@ function Home() {
             <Carousel.Item>
               <img
                 className='d-block w-100'
-                src='https://picsum.photos/id/456/1200/400'
+                // src={slider[1] && slider[1].images[0].url}
+                src='https://res.cloudinary.com/dibyofcwi/image/upload/v1679817756/sliders/viuiirsv7hqgbwt8vogy.png'
                 alt='Second slide'
               />
 
               <Carousel.Caption>
                 <div className='carouselTopContent'>
-                  <h3>Second slide label</h3>
-                  <p>
-                    Nulla vitae elit libero, a pharetra augue mollis interdum.
-                  </p>
+                  <Carousel.Caption>
+                    <div className='carouselTopContent'>
+                      {/* <h3>{slider[1] && slider[1].heading}</h3>
+                      <p>{slider[1] && slider[1].description}</p> */}
+                    </div>
+                  </Carousel.Caption>
                 </div>
               </Carousel.Caption>
             </Carousel.Item>
@@ -120,16 +103,15 @@ function Home() {
             <Carousel.Item>
               <img
                 className='d-block w-100'
-                src='https://picsum.photos/id/678/1200/400'
+                // src={slider[2] && slider[2].images[0].url}
+                src='https://res.cloudinary.com/dibyofcwi/image/upload/v1679817756/sliders/viuiirsv7hqgbwt8vogy.png'
                 alt='Third slide'
               />
 
               <Carousel.Caption>
                 <div className='carouselTopContent'>
-                  <h3>Third slide label</h3>
-                  <p>
-                    Nulla vitae elit libero, a pharetra augue mollis interdum.
-                  </p>
+                  {/* <h3>{slider[2] && slider[2].heading}</h3>
+                  <p>{slider[2] && slider[2].description}</p> */}
                 </div>
               </Carousel.Caption>
             </Carousel.Item>

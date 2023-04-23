@@ -48,6 +48,13 @@ import Reviews from './component/Admin/Reviews';
 import PageNotFound from './component/layout/PageNotFound';
 import Contact from './component/layout/Contact/Contact';
 import About from './component/layout/About/About';
+import PaymentRazor from './component/Cart/Payment/PaymentRazor';
+import PaymentSuccess from './component/Cart/Payment/PaymentSuccess';
+
+import { ChakraProvider } from '@chakra-ui/react';
+import Slider from './component/Admin/slider/Slider';
+import AllSlider from './component/Admin/slider/AllSlider';
+import SliderEdit from './component/Admin/slider/SliderEdit';
 
 //import {webFont} from 'webfontloader';
 
@@ -71,13 +78,13 @@ function App() {
   // // {isAuthenticated && console.log(user.user.role)}
 
   //block inspect in browser
-  //window.addEventListener("contextmenu",(e)=>e.preventDefault())
+  window.addEventListener("contextmenu",(e)=>e.preventDefault())
 
   return (
     <>
+      {/* <ChakraProvider> */}
+      <Header />
       <Router>
-        <Header />
-
         {isAuthenticated && <UserOptions user={user} />}
 
         <Routes>
@@ -118,7 +125,11 @@ function App() {
 
           <Route exact path='/order/confirm' element={<ConfirmOrder />} />
 
-          <Route exact path='/payment' element={<Payment />} />
+          {/* <Route exact path='/payment' element={<Payment />} /> */}
+
+          <Route exact path='/payment' element={<PaymentRazor />} />
+
+          <Route exact path='/paymentsuccess' element={<PaymentSuccess />} />
 
           <Route exact path='/success' element={<OrderSuccess />} />
 
@@ -152,14 +163,20 @@ function App() {
 
           <Route exact path='/admin/reviews' element={<Reviews />} />
 
+          <Route exact path='/admin/slider' element={<Slider />} />
+          <Route exact path='/admin/allslider' element={<AllSlider />} />
+          <Route exact path='/admin/slider/:id' element={<SliderEdit />} />
+
           <Route path='/*' element={<PageNotFound />} />
           {/* or */}
           {/* <Route path="/*" element={<Navigate to="/" />} />
            */}
         </Routes>
 
-        <Footer />
+       
       </Router>
+      {/* </ChakraProvider> */}
+       <Footer />
     </>
   );
 }

@@ -21,7 +21,7 @@ exports.isAuthenticateUser=catchAsyncError(async(req,res,next)=>{
 
     req.user=await User.findById(decodedData.id);
 
-   // console.log(req.user);
+    // console.log("req.user data in auth : ",req.user);
 
     next();
 

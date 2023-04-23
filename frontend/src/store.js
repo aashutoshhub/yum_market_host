@@ -9,33 +9,38 @@ import {forgotPasswordReducer, getAllUsersReducer, getUserDetailsReducer, profil
 import { cartReducer } from './reducers/CartReducer';
 import {  deleteOrderReducer, getAllOrdersReducer, myOrderDetailsReducer, myOrderReducer, newOrderReducer, updateOrderReducer } from './reducers/OrderReducer';
 import { adminProductReducer, deleteAdminProductReducer, newProductReducer, newReviewReducer, productDetailReducer, productsReviewReducer, reviewActionReducer, updateAdminProductReducer } from './reducers/AllProductReducer';
+import { deleteSliderReducer, getSliderReducer, newSliderReducer, singleSliderDetailsReducer, updateSliderReducer } from './reducers/OtherReducer';
 
 // 5:22
 const reducer = combineReducers({
-    productsitem: ProductReducer,
-    productDetails: productDetailReducer ,
-    users:userReducer,
-    profile:profileReducer,
-    forgotPassword:forgotPasswordReducer,
-    cart:cartReducer,
-    newOrder:newOrderReducer, //this is new order reducer 
-    myOrders:myOrderReducer,
-    orderDetails:myOrderDetailsReducer,
-    newReview:newReviewReducer,
-    allAdminProducts:adminProductReducer,
-    newProduct:newProductReducer,
-    removedProduct:deleteAdminProductReducer,
-    updateProduct:updateAdminProductReducer,
-    allOrders:getAllOrdersReducer,
-    deletedOrder:deleteOrderReducer,
-    updateOrder:updateOrderReducer,
-    AllUsers:getAllUsersReducer,
-    updateUser:updateUserReducer,
-    userDetails:getUserDetailsReducer,
-    productReviews:productsReviewReducer,
-    reviewAction:reviewActionReducer,
-    
-})
+  productsitem: ProductReducer,
+  productDetails: productDetailReducer,
+  users: userReducer,
+  profile: profileReducer,
+  forgotPassword: forgotPasswordReducer,
+  cart: cartReducer,
+  newOrder: newOrderReducer, //this is new order reducer
+  myOrders: myOrderReducer,
+  orderDetails: myOrderDetailsReducer,
+  newReview: newReviewReducer,
+  allAdminProducts: adminProductReducer,
+  newProduct: newProductReducer,
+  removedProduct: deleteAdminProductReducer,
+  updateProduct: updateAdminProductReducer,
+  allOrders: getAllOrdersReducer,
+  deletedOrder: deleteOrderReducer,
+  updateOrder: updateOrderReducer,
+  AllUsers: getAllUsersReducer,
+  updateUser: updateUserReducer,
+  userDetails: getUserDetailsReducer,
+  productReviews: productsReviewReducer,
+  reviewAction: reviewActionReducer,
+  slider: newSliderReducer,
+  allSlider: getSliderReducer,
+  removeSlider: deleteSliderReducer,
+  sliderDetails: singleSliderDetailsReducer,
+  updateSlider: updateSliderReducer
+});
 
 let initialState={
     cart:{

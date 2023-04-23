@@ -39,9 +39,9 @@ const CheckoutForm = () => {
   const { user } = useSelector(state => state.users);
 
   //console.log(shippingInfo.address);
-  console.log(user.user.email);
+  console.log(user.user);
 
-  //console.log(orderInfo.totalPrice);
+  console.log("orderInfo in CheckoutForm : ",orderInfo);
 
   //multiply with 100 inorder to convert into paisa to store in stripe
   const paymentData = {

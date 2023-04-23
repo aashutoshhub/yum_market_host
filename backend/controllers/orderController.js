@@ -3,10 +3,11 @@ const Order=require('../models/orderModel');
 const Product=require('../models/productModel');
 const ErrorHandler = require('../utils/errorHandler');
 const catchAsyncError =require('../middleware/catchAsyncError');
+const { orderConfirmationMail } = require('../Invoice-generator/generateInvoice');
 
 
 
-//creating new order
+//creating new order  //generate pdf here 
 exports.newOrder=catchAsyncError(async(req,res,next)=>{
     const {
         shippingInfo,
@@ -26,9 +27,17 @@ exports.newOrder=catchAsyncError(async(req,res,next)=>{
         taxPrice,
         shippingPrice,
         totalPrice,
-        paidAt:Date.now(),
-        user:req.user._id,
+        paidAt: Date.now(),
+        user: req.user._id,
     });
+
+    console.log("order details : ", order);
+
+    if (order) {
+      //order confirmation mail to user 
+        orderConfirmationMail(order._id);
+      
+    }
 
     res.status(201).json({
         success:true,
